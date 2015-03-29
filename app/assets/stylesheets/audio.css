@@ -1,0 +1,154 @@
+/*===============================
+ 11.Audio
+ ===============================*/
+/*　プレイヤー（再生バー）の高さ、幅、背景色の指定　*/
+.audiojs{
+	height: 36px;
+	width: 100%;
+}
+/*　再生・停止ボタンの高さ、幅、パディングの指定　*/
+.audiojs .play-pause{
+	width: 6%;
+	height: 100%;
+	margin: 0 auto;
+}
+/*　再生・停止ボタンなどの p 要素　*/
+.audiojs > .play-pause > p {
+	margin: 7.5%;
+	width: 86%;
+	height: 86%;
+	background-size: contain;
+	background-position: center center;
+}
+/*　進行状態・ロードの状態を表示する部分　*/
+.audiojs .scrubber{
+	background: #5a5a5a;
+	width: 66.2%;
+	height: 100%;
+	margin: 0;
+	cursor: pointer;
+}
+/*　進行状態を表示するバーの部分　*/
+.audiojs .progress{
+	height: 100%;
+	width: 0px;
+	background: #000;
+}
+/*　ロード状態を表示するバーの部分　*/
+.audiojs .loaded {
+	height: 100%;
+	background: #acacac;
+}
+/*　再生時間の部分　*/
+.audiojs .time {
+	width: 13%;
+	float: right;
+	height: 100%;
+	line-height: 36px;
+	font-size: 1rem;
+	text-align: center;
+	padding: 0 1%;
+}
+.audiojs .error-message {
+	height: 50%;
+	line-height: 50px;
+}
+/*　再生している曲の情報　*/
+.track-details {
+	clear: both;
+	height: 20px;
+	width: 280px;
+	padding: 1px 6px;
+	background: #eee;
+	color: #222;
+	font-size: 11px;
+	line-height: 36px;
+}
+
+#audio_comment{
+	display: block;
+	width: 84.2%;
+	height: 40px;
+	float: left;
+	font-size: 1.5rem;
+}
+
+input[type="submit"].audio_comment_btn{
+	display: block;
+	width: 132px;
+	text-align: center;
+	padding: 0;  
+	margin: 0;
+	height: 46px;
+	box-shadow: none;
+	border-radius: 0;
+}
+input[type="submit"].audio_comment_btn:hover{
+	background-color: rgba(135,153,0,1);
+}
+
+.track-details:before {
+	content: '♬  Now Playing: ';
+}
+.audiojs .play{
+	background: url("play.png") no-repeat;
+}
+.audiojs .loading{
+	/*background: url("$1") no-repeat;*/
+}
+.audiojs .error{
+	/*background: url("$1") no-repeat;*/
+}
+.audiojs .pause{
+	background: url("pause.png") no-repeat;
+}
+
+.audiojs .seekbar{
+	display: block;
+	float: right;
+	width: 20px;
+	height: 100%;
+	background: #b8d200;
+	border-radius: 6px;
+	margin-right: -10px;
+}
+
+.audiojs .volume{
+	display: block;
+	float: left;
+	width: 12.5%;
+	height: 100%;
+	background: url("volume.png") no-repeat;
+	background-size: contain;
+	background-position: center center;
+	cursor: pointer;
+}
+.audiojs .volume-wrapper{
+	float: right;
+	display: block;
+	height: 100%;
+	width: 100%;
+	background: #000;
+	/*
+	-moz-transform: rotate(90deg) translateX(-68px) translateY(-31px);
+	-webkit-transform: rotate(90deg) translateX(-68px) translateY(-31px);
+	-o-transform: rotate(90deg) translateX(-68px) translateY(-31px);
+	-ms-transform: rotate(90deg) translateX(-68px) translateY(-31px);
+	transform: rotate(90deg) translateX(-68px) translateY(-31px);
+	*/
+}
+
+.audiojs > .volume{
+	overflow: visible;
+}
+
+.audiojs .volume-bar{
+	padding: 10% 5%;
+}
+
+.audiojs .volume-current{
+	display: block;
+	width: 80%;
+	height: 100%;
+	margin: 0 auto;
+}

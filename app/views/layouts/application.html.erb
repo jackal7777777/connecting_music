@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TestApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'audio', media: 'all', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="wrapper">
+    <header>
+      <nav>
+        <ul class="clearfix">
+          <li><a href="/"><%= image_tag('title.png', id:"title") %></a></li>
+          <li><a href="#">ランキング</a></li>
+          <li><a href="musics/listen/3">オススメ</a></li>
+          <li><a href="#">マイページ</a></li>
+          <li><%= link_to '投稿する', musics_new_path %></li>
+          <!-- user_signed_in? はユーザがログインしているか調べるdeviseのHelperメソッド -->
+          <% if user_signed_in? %> 
+            <!-- current_user は現在ログインしているUserオブジェクトを返すdeviseのHelperメソッド -->
+            <!-- *_path はUserモデルを作成したときに、
+              deviseにより自動で作成されてますので、rake routesで確認できます -->
+            <li><%= link_to '会員情報変更', edit_user_registration_path %></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "会員登録", new_user_registration_path %></li>
+            <li><%= link_to "ログイン", new_user_session_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+    <div class="index">
+      <main class="clearfix">
+      <% if user_signed_in? %>
+<p class="welcome">ようこそ<strong><%= current_user.user_name %></strong>さん</p>
+<% end %>
+<% if notice.present? %>
+<p class="notice"><%= notice %></p>
+<% end %>
+<% if alert.present? %>
+<p class="alert"><%= alert %></p>
+<% end %>
+      <%= yield %>
+      </main>
+    </div>
+    <footer class="clearfix">
+      <p>Copyright (C) 2014  katsuya kubo</p>
+    </footer>
+  </div>
+</body>
+</html>

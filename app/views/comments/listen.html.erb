@@ -1,0 +1,56 @@
+<div class="content">
+  <!--<%= image_tag('play.png', id:"play") %>-->
+  <p id="musicName"><%= @music_info[:song_title] %></p>
+  <p id="createrNameLeft">by <%= @artist_info[:user_name] %></p>
+  <%= @music %>
+  <div id="createrArea">
+    <%= image_tag(@artist_info[:image_path], id:"createrImage") %>
+    <p id="createrName"><%= @artist_info[:user_name] %></p>
+    <p id="follow">お気に入りに追加</p>
+  </div>
+  <%= image_tag('music.png', size:"940x109") %>
+</div>
+<div id="communication" class="content clearfix">
+  <h2>チャット</h2>
+  <%= form_for Comment.new do |f| %>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+    <%= f.submit %>
+  <% end %>
+  <section>
+    <%= image_tag('miku.jpeg') %>
+    <p class="userName">miku</p>
+    <p class="comments clearfix">comment...</p>
+  </section>
+  <section>
+    <%= image_tag('neko2.jpg') %>
+    <p class="userName">neko</p>
+    <p class="comments clearfix">comment...</p>
+  </section>
+  <section><%= image_tag('bakeneko.png') %>
+    <p class="userName">bakeneko</p>
+    <p class="comments clearfix">comment...</p>
+  </section>
+  <section>
+    <%= image_tag('neko2.jpg') %>
+    <p class="userName">neko</p>
+    <p class="comments clearfix">comment...</p>
+  </section>
+</div>
+<div id="playList" class="content clearfix">
+  <h2>プレイリスト</h2>
+  <h3>now playing...</h3>
+  <section>
+    <p class="musicName">music name</p>
+    <p class="playTime"><span>00:23</span>/03:24</p>
+  </section>
+  <h3>next...</h3>
+  <section>
+    <p class="musicName">music name</p>
+    <p class="playTime"><span>00:23</span>/03:24</p>
+  </section>
+  <section>
+    <p class="musicName">music name</p>
+    <p class="playTime"><span>00:23</span>/03:24</p>
+  </section>
+</div>

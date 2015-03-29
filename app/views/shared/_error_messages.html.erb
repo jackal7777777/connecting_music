@@ -1,0 +1,10 @@
+<% if object.errors.present? %>
+<div class="errMessage">
+  <p>以下の内容を確認してください。</p>
+  <ul>
+  <% object.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>

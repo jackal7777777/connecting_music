@@ -1,0 +1,13 @@
+<% comments.each_with_index do |comment, i| %>
+  <% if i == 0 && now == 1 %>
+    <fieldset class="now_comment">
+      <legend><%= comment.created_at %></legend>
+      <p><%= comment.body %></p>
+    </fieldset>
+  <% else %>
+    <fieldset>
+      <legend><%= comment.created_at %></legend>
+      <p><%= comment.body %></p>
+    </fieldset>
+  <% end %>
+<% end %>

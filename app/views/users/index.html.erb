@@ -1,0 +1,15 @@
+<h1>トップページ</h1>
+<div class="content clearfix">
+  <h2>新着順</h2>
+  <% @music_info.each_with_index do |music, i| %>
+  <div class="music_box">
+    
+    <% @artist_info = User.find_by(:id => music[:user_id])%>
+
+    <%= image_tag(@artist_info[:image_path],class:"creator_img" ) %>
+    <p class="music_name"><%= link_to music[:song_title], 'musics/listen/'+music[:id].to_s %></p>
+    <p>by<%= @artist_info[:user_name]%></p>
+    <p>再生数：<%= music[:count].to_s %></p>
+  </div>
+<% end %>
+</div>

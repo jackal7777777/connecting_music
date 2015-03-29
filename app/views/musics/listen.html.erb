@@ -1,0 +1,81 @@
+<%= include_gon %>
+<div class="content">
+  <p id="musicName"><%= @music_info[:song_title] %></p>
+  
+  <%= @music %>
+  <div id="createrArea">
+    <%= image_tag(@artist_info[:image_path], id:"createrImage") %>
+    <p id="createrName">by <%= @artist_info[:user_name] %></p>
+    <p id="follow">プレイリストに追加</p>
+  </div>
+  <!-- <p id="createrNameLeft">by <%= @artist_info[:user_name] %></p> -->
+  <!--<%= image_tag('music.png', size:"940x109") %>-->
+  <div class="music_description"><p><%= @music_info[:description] %></p></div>
+  <!--<canvas id="visualizer" width="700" height="100"></canvas>-->
+  <audio src="<%= @music_play %>" preload="none" loop="false" style="width:100%;background:'/assets/images/music.png';" id="audioPlayer">
+  
+  </audio>
+  <% if user_signed_in?  %>
+    <%= form_for(@comment, remote: true, :url => '/comments/create') do |f| %>
+      <%= f.text_field :body, class:"comment_tarea", id:"audio_comment" %>
+      <%= f.hidden_field :music_id, :value => @music_id %>
+      <%= f.hidden_field :user_id, :value => @user[:id] %>
+      <%= f.submit "コメントする", class:"audio_comment_btn", id:"comment_btn" %>
+    <% end %>
+  <% end %>
+</div>
+<div id="communication" class="content clearfix">
+  <h2>チャット</h2>
+  <div class="clearfix">
+  <% if user_signed_in?  %>
+    <%= form_for(@comment, remote: true, :url => '/comments/create') do |f| %>
+      <%= f.label :body, "コメント" %><br>
+      <%= f.text_area :body, class:"comment_tarea" %>
+      <%= f.hidden_field :music_id, :value => @music_id %>
+      <%= f.hidden_field :user_id, :value => @user[:id] %>
+      <%= f.submit "コメントする", class:"min_btn", id:"comment_btn" %>
+    <% end %>
+  <% end %>
+  </div>
+  <div id='comment_list'>
+    <%= render partial: "comment", locals: { comments: @comments, now: @now} %>
+  </div>
+  <!--<section>
+    <%= image_tag('miku.jpeg') %>
+    <p class="userName">miku</p>
+    <p class="comments clearfix">comment...</p>
+  </section>
+  <section>
+    <%= image_tag('neko2.jpg') %>
+    <p class="userName">neko</p>
+    <p class="comments clearfix">comment...</p>
+  </section>
+  <section><%= image_tag('bakeneko.png') %>
+    <p class="userName">bakeneko</p>
+    <p class="comments clearfix">comment...</p>
+  </section>
+  <section>
+    <%= image_tag('neko2.jpg') %>
+    <p class="userName">neko</p>
+    <p class="comments clearfix">comment...</p>
+  </section>-->
+</div>
+<div id="playList" class="content clearfix">
+  <h2>プレイリスト</h2>
+  <h3>now playing...</h3>
+  <section>
+    <p class="musicName">music name</p>
+    <p class="playTime"><span>00:23</span>/03:24</p>
+  </section>
+  <h3>next...</h3>
+  <section>
+    <p class="musicName">music name</p>
+    <p class="playTime"><span>00:23</span>/03:24</p>
+  </section>
+  <section>
+    <p class="musicName">music name</p>
+    <p class="playTime"><span>00:23</span>/03:24</p>
+  </section>
+</div>
+<%= javascript_include_tag 'buffer-loader', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'visualizer', 'data-turbolinks-track' => true %>

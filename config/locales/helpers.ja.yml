@@ -1,0 +1,34 @@
+ja:
+  helpers:
+    label:
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（再入力）
+        remember_me: 次回からパスワード入力を省く
+        user_name: ユーザー名
+        last_name: 姓
+        first_name: 名
+        country: 住んでいる国
+        city: 住んでいる都市
+        description: 自己紹介
+        image_path: 画像
+      music:
+        song_title: 曲名
+        description: 説明
+        song_file_path: ファイル
+        created_at: 投稿日時
+      genre:
+        id: ジャンル名
+        genre_name: ジャンル名
+      message:
+        title: 件名
+        body: 本文
+        created_at: 送信日時
+      comment:
+        body: コメント
+        created_at: 日時
+      community:
+        community_name: コミュニティ名
+        description: 説明
+        created_at: 創設日時
